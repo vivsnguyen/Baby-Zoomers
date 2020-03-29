@@ -81,10 +81,17 @@ def load_activities():
     Activity.query.delete()
 
     for row in open("seed_data/u.activity"):
-        row = row.rstrip()
-        activity_id, title = row.split("|")
+        row = row.rstrip().split("|")
 
-        activity = Activity(activity_id=activity_id, title=title)
+        activity_id = row[0]
+        title = row[1]
+
+        if len(row)>2:
+            link = row[2]
+        else:
+            link = None
+            
+        activity = Activity(activity_id=activity_id, title=title, link=link)
 
         db.session.add(activity)
 

@@ -71,6 +71,7 @@ class Activity(db.Model):
 
     activity_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     title = db.Column(db.String(50))
+    link = db.Column(db.String(200), nullable=True)
 
     types = db.relationship("Type",
                              secondary="activity_types",
