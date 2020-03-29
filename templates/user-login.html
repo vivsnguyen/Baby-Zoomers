@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="container">
+      <div class="row justify-content-center">
+          <div class="col-6">
+              <h2 id="sign-in">
+                  User Login
+              </h2>
+          </div>
+      </div>
+  </div>
+  <div class="container">
+      <div class="row justify-content-center">
+          <div class="col-6">
+              <h4 id="sign-in-form">Sign In:</h4>
+              <form action="/log-in" method="POST">
+                  <div class="form-group">
+                      <input type="email" class="form-control" required name="email" placeholder="Email address">
+                  </div>
+                  <div class="form-group">
+                      <input type="password" class="form-control" required name="password" placeholder="Password">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Log In</button>
+              </form>
+              <a href="/register">New user?</a>
+          </div>
+      </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <h2 id="welcome">
+                    New User Registration
+                </h2>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <form action="/register" method="POST">
+                    <div class="form-group">
+                        <input type="text" class="form-control" required name="name" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" required name="email" placeholder="Email address">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" required name="password" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="zipcode" placeholder="Zipcode (optional)">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Register Now</button>
+                </form>
+                <p>Already registered?
+                <a href="/log-in">Click here to log in.</a></p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

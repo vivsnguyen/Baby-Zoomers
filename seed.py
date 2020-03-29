@@ -20,9 +20,9 @@ def load_users():
 
     for row in open("seed_data/u.user"):
         row = row.rstrip()
-        user_id, username, email, password, zipcode = row.split("|")
+        id, username, email, password, zipcode = row.split("|")
 
-        user = User(user_id=user_id,
+        user = User(id=id,
                     username=username,
                     email=email,
                     zipcode=zipcode)
@@ -44,11 +44,10 @@ def load_schedules():
     for row in open("seed_data/u.schedule"):
         row = row.rstrip().split("|")
 
-        schedule_id = row[0]
-        title = row[1]
+        schedule_id, title, user_id = row
 
         schedule = Schedule(schedule_id=schedule_id,
-                      title=title)
+                      title=title, user_id = user_id)
 
         db.session.add(schedule)
 
@@ -90,7 +89,7 @@ def load_activities():
             link = row[2]
         else:
             link = None
-            
+
         activity = Activity(activity_id=activity_id, title=title, link=link)
 
         db.session.add(activity)

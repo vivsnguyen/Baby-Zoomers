@@ -14,7 +14,7 @@ class User(db.Model):
 
     __tablename__ = "users"
 
-    user_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     username = db.Column(db.String(64))
     email = db.Column(db.String(64))
     password_hash = db.Column(db.String(128), nullable=False)
@@ -26,10 +26,12 @@ class User(db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
+    schedules = db.relationship("Schedule", backref="users")
+
     def __repr__(self):
         """Provide helpful representation when printed."""
 
-        return f"<User user_id={self.user_id} email={self.email}>"
+        return f"<User id={self.id} email={self.email}>"
 
 
 class Schedule(db.Model):
@@ -39,6 +41,10 @@ class Schedule(db.Model):
 
     schedule_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     title = db.Column(db.String(120), nullable=False)
+
+    user_id = db.Column(db.Integer,
+                        db.ForeignKey('users.id'),
+                        nullable=False)
 
     activities = db.relationship("Activity",
                              secondary="schedule_activities",
