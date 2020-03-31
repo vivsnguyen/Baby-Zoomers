@@ -115,11 +115,11 @@ def show_user_dashboard(user_id):
 
     if check_authorization(user_id):
         user = User.query.get(user_id)
-        schedules = user.playlists
+        schedules = user.schedules
 
         return render_template("user-dashboard.html",
                                 user=user,
-                                playlists=playlists)
+                                schedules=schedules)
 
     return render_template("unauthorized.html")
 

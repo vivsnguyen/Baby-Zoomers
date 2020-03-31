@@ -96,37 +96,37 @@ def load_activities():
 
     db.session.commit()
 
-# def set_val_user_id():
-#     """Set value for the next user_id after seeding database"""
-#
-#     # Get the Max user_id in the database
-#     result = db.session.query(func.max(User.user_id)).one()
-#     max_id = int(result[0])
-#
-#     # Set the value for the next user_id to be max_id + 1
-#     query = "SELECT setval('users_user_id_seq', :new_id)"
-#     db.session.execute(query, {'new_id': max_id + 1})
-#     db.session.commit()
-#
-# def set_val_schedule_id():
-#     """Set value for the next schedule_id after seeding database"""
-#
-#     result = db.session.query(func.max(Schedule.schedule_id)).one()
-#     max_id = int(result[0])
-#
-#     query = "SELECT setval('schedules_schedule_id_seq', :new_id)"
-#     db.session.execute(query, {'new_id': max_id + 1})
-#     db.session.commit()
-#
-# def set_val_type_id():
-#     """Set value for the next type_id after seeding database"""
-#
-#     result = db.session.query(func.max(Type.type_id)).one()
-#     max_id = int(result[0])
-#
-#     query = "SELECT setval('types_type_id_seq', :new_id)"
-#     db.session.execute(query, {'new_id': max_id + 1})
-#     db.session.commit()
+def set_val_user_id():
+    """Set value for the next user_id after seeding database"""
+
+    # Get the Max user_id in the database
+    result = db.session.query(func.max(User.user_id)).one()
+    max_id = int(result[0])
+
+    # Set the value for the next user_id to be max_id + 1
+    query = "SELECT setval('users_user_id_seq', :new_id)"
+    db.session.execute(query, {'new_id': max_id + 1})
+    db.session.commit()
+
+def set_val_schedule_id():
+    """Set value for the next schedule_id after seeding database"""
+
+    result = db.session.query(func.max(Schedule.schedule_id)).one()
+    max_id = int(result[0])
+
+    query = "SELECT setval('schedules_schedule_id_seq', :new_id)"
+    db.session.execute(query, {'new_id': max_id + 1})
+    db.session.commit()
+
+def set_val_type_id():
+    """Set value for the next type_id after seeding database"""
+
+    result = db.session.query(func.max(Type.type_id)).one()
+    max_id = int(result[0])
+
+    query = "SELECT setval('types_type_id_seq', :new_id)"
+    db.session.execute(query, {'new_id': max_id + 1})
+    db.session.commit()
 
 
 if __name__ == "__main__":
@@ -141,6 +141,6 @@ if __name__ == "__main__":
     load_types()
     load_activities()
 
-    # set_val_user_id()
-    # set_val_schedule_id()
-    # set_val_type_id()
+    set_val_user_id()
+    set_val_schedule_id()
+    set_val_type_id()
