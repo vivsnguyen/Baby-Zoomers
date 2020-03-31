@@ -8,3 +8,6 @@ from model import Activity, ActivityType, ScheduleActivity
 
 import server
 # from server import app
+
+def create_new_schedule():
+    pass
